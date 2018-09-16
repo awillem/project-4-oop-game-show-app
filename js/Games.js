@@ -26,7 +26,7 @@ class Game {
    */
 
   getRandomPhrases () {
-    let random = Math.floor(Math.random() * this.phrases.length)
+    let random = Math.floor(Math.random() * this.phrases.length);
     return this.phrases[random];
   }
 
@@ -35,12 +35,17 @@ class Game {
    */
 
   handleInteraction (key,phrase) {
-    console.log(`${phrase} 3`);
-    if (phrase.checkLetter(key)) {
-      removeLife();
+    if (!phrase.checkLetter(key)) {
+      this.removeLife();
+      console.log(this.missed);
+      if (this.missed === 5) {
+        this.gameOver('lose');
+      }
     } else {
-      showMatchedLetter();
-      checkforWin();
+      phrase.showMatchedLetter(key);
+      if (this.checkForWin() === 'win'){
+        this.gameOver('win');
+      }
     }
 
   }
@@ -50,6 +55,13 @@ class Game {
    */
 
   removeLife () {
+    const heartContainer = document.getElementById('scoreboard');
+    const heartOl = heartContainer.firstElementChild;
+    const heartLi = heartOl.children;
+    if (this.missed < 5){
+    heartLi[this.missed].style.display = "none";
+    this.missed += 1;
+  }
 
   }
 
@@ -58,7 +70,21 @@ class Game {
    */
 
   checkForWin () {
+    let li = document.getElementsByClassName('letter');
+    let showCount = 0;
+    for ( let i = 0; i < li.length; i++) {
+      //console.log(li[i]);
+      if(li[i].classList.contains('show')) {
+        showCount += 1;
+      }
+      if (showCount === li.length) {
+        return 'win';
+      }
+    }
 
+    // if () {
+    //
+    // }
 
   }
 
@@ -66,8 +92,19 @@ class Game {
   * displays win or lose message
    */
 
-  gameOver() {
+  gameOver(status) {
+    const overlay = document.getElementById('overlay');
+    const gameOverMessage = document.getElementById('game-over-message');
+    const startButton = document.getElementById('btn__reset');
+    startButton.style.display = "none";
+    if (status === 'win') {
+      gameOverMessage.innerText = "You Win!!"
+      overlay.style.display = 'flex';
 
+    } else if (status === 'lose') {
+      gameOverMessage.innerText = "Sorry, you lose."
+      overlay.style.display = 'flex';
+    }
   }
 
   /**
@@ -75,9 +112,10 @@ class Game {
    */
 
   startGame() {
-    randomPhrase = this.getRandomPhrases();
-    const gamePhrase = new Phrase (randomPhrase);
-    gamePhrase.addPhraseToDisplay(randomPhrase);
+    let randomPhrase = this.getRandomPhrases();
+    console.log(`${randomPhrase} game 79`);
+    currPhrase = new Phrase (randomPhrase);
+    currPhrase.addPhraseToDisplay(randomPhrase);
   }
 
 

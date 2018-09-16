@@ -8,7 +8,7 @@ class Phrase {
 */
 
 addPhraseToDisplay () {
-  console.log(`${this.phrase} 1`);
+  console.log(`${this.phrase} phrase 11`);
   let phraseArray = this.phrase.split('');
   const phraseUl = document.getElementsByTagName('ul');
 
@@ -42,8 +42,14 @@ checkLetter (key) {
 * reveals letter(s) on board that match
 */
 
-showMatchedLetter () {
-
+showMatchedLetter (key) {
+  let letter = key.target.innerText;
+  console.log(letter);
+  let li = document.getElementsByClassName(letter);
+  console.log(li);
+  for (let i = 0; i < li.length; i++) {
+    li[i].className = `show letter ${letter}`;
+  }
 }
 
 }//end class
