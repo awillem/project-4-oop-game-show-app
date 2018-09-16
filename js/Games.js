@@ -80,15 +80,11 @@ class Game {
         return 'win';
       }
     }
-
-    // if () {
-    //
-    // }
-
   }
 
   /**
   * displays win or lose message
+  * resets game - changes 'start' button to 'reset', removes phrase from display, resets scoreboard & keyboard
    */
 
   gameOver(status) {
