@@ -37,7 +37,6 @@ class Game {
   handleInteraction (key,phrase) {
     if (!phrase.checkLetter(key)) {
       this.removeLife();
-      console.log(this.missed);
       if (this.missed === 5) {
         this.gameOver('lose');
       }
@@ -73,7 +72,6 @@ class Game {
     let li = document.getElementsByClassName('letter');
     let showCount = 0;
     for ( let i = 0; i < li.length; i++) {
-      //console.log(li[i]);
       if(li[i].classList.contains('show')) {
         showCount += 1;
       }
