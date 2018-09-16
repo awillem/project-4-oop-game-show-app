@@ -35,8 +35,10 @@ class Game {
    */
 
   handleInteraction (key,phrase) {
-    console.log(key);
-    if (!phrase.checkLetter(key)) {
+    console.log(key.innerText);
+    console.log(phrase);
+
+    if (!phrase.checkLetter(key.innerText)) {
       this.removeLife();
       if (this.missed === 5) {
         this.gameOver('lose');

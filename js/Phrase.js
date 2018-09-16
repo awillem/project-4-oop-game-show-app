@@ -32,8 +32,9 @@ addPhraseToDisplay () {
 */
 
 checkLetter (key) {
+  console.log(key);
   let phraseArray = this.phrase.split('');
-  return phraseArray.find(letter => letter === key.target.innerText);
+  return phraseArray.find(letter => letter === key);
 
 }
 
@@ -44,7 +45,7 @@ checkLetter (key) {
 */
 
 showMatchedLetter (key) {
-  let letter = key.target.innerText;
+  let letter = key.innerText;
   let li = document.getElementsByClassName(letter);
   for (let i = 0; i < li.length; i++) {
     li[i].className = `show letter ${letter}`;
