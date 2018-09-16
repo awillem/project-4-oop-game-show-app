@@ -51,7 +51,6 @@ qwerty.addEventListener('click', function (e) {
         pressedKey = keys[i];
       }
     }
-    console.log(pressedKey);
     markButton(pressedKey);
 }
 });
@@ -69,6 +68,5 @@ document.addEventListener('keypress', function (e) {
       pressedKey = keys[i];
     }
   }
-  console.log(pressedKey);
   markButton(pressedKey);
 });

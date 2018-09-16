@@ -35,8 +35,6 @@ class Game {
    */
 
   handleInteraction (key,phrase) {
-    console.log(key.innerText);
-    console.log(phrase);
 
     if (!phrase.checkLetter(key.innerText)) {
       this.removeLife();
@@ -128,7 +126,6 @@ class Game {
 
   startGame() {
     let randomPhrase = this.getRandomPhrases();
-    console.log(`${randomPhrase} game 79`);
     currPhrase = new Phrase (randomPhrase);
     currPhrase.addPhraseToDisplay(randomPhrase);
   }

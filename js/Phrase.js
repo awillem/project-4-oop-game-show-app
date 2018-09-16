@@ -32,7 +32,6 @@ addPhraseToDisplay () {
 */
 
 checkLetter (key) {
-  console.log(key);
   let phraseArray = this.phrase.split('');
   return phraseArray.find(letter => letter === key);
 
