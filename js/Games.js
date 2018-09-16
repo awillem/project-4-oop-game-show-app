@@ -94,7 +94,21 @@ class Game {
     const overlay = document.getElementById('overlay');
     const gameOverMessage = document.getElementById('game-over-message');
     const startButton = document.getElementById('btn__reset');
-    startButton.style.display = "none";
+    const phraseCont = document.getElementById('phrase');
+    const keyboard = document.getElementsByClassName('key');
+    const hearts = document.getElementById('scoreboard');
+    const heartsLi = hearts.firstElementChild.children;
+    startButton.innerText = "Reset"; //Changes start button to say 'reset'
+    phraseCont.innerHTML = '<ul></ul>'; //Removes phrase from display
+    for (let i = 0; i < keyboard.length; i++) { //resets onscreen keyboard
+      keyboard[i].className = 'key';
+      keyboard[i].removeAttribute('disabled');
+    }
+    for (let i = 0; i < heartsLi.length; i++) { //resets scoreboard
+      heartsLi[i].style.display = 'inline-block';
+    }
+
+
     if (status === 'win') {
       gameOverMessage.innerText = "You Win!!"
       overlay.style.display = 'flex';

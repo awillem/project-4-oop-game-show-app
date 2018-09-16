@@ -1,7 +1,5 @@
 const startButton = document.getElementById('btn__reset');
 const qwerty = document.getElementById('qwerty');
-const keyRow = qwerty.children;
-console.log(keyRow);
 let currGame; // new game created when start button clicked
 let currPhrase; // random phrase created during startGame()
 
